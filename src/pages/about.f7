@@ -1,0 +1,40 @@
+<template>
+	<div class="page" data-name="about">
+
+		<!-- Top Navbar -->
+		<div class="navbar navbar-large">
+			<div class="navbar-bg"></div>
+			<div class="navbar-inner sliding">
+				<div class="left">
+					<a href="#" class="link icon-only back">
+						<i class="icon f7-icons if-not-md">arrow_left</i>
+						<i class="icon material-icons if-md">arrow_back</i>
+					</a>
+				</div>
+				<div class="title">About Vivid</div>
+				<div class="title-large">
+					<div class="title-large-text">About Vivid</div>
+				</div>
+			</div>
+		</div>
+        <!-- Top Navbar -->
+
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <div class="block block-strong">
+                Don't be bored anymore. Vivid is a collection of memory game applets.
+            </div>
+        </div>
+        <!-- Page Content -->
+
+        
+
+
+	</div>
+</template>
+<script>
+	export default () => {
+		return $render;
+	};
+</script>
