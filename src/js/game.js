@@ -1,8 +1,9 @@
 import f7Dom from 'dom7';
 import { RandomItems, RandomColor } from './util';
+import Sortable from 'sortablejs'
 import 'jquery-sortablejs';
-import jQuery from 'jquery';
-const $ = jQuery;
+import $ from 'jquery';
+// const $ = jQuery;
 
 let level = 10;
 let score = 0;
@@ -62,12 +63,8 @@ async function ShowReferencePage() {
         const grid = $('#reference-page > .grid');
         HideAllPageContent();
         grid.html();
-        items.forEach(item => {
-            grid.append(`
-                <div class="cell flex-center">
-                    <i class="fa-solid fa-${item}">
-                    </i>
-                </div>`);
+        items.forEach(function (item){
+            grid.append(CreateCard(item));
         });
         $('.game-page #reference-page').show();
         $('button#startButton').on('click', function(e) {
@@ -82,13 +79,19 @@ async function ShowSortingPage() {
         const grid = $('#sorting-page > .grid');
         HideAllPageContent();
 
+        // show all the grids
+        grid.html();
+        items.forEach(function (item) {
+            grid.append(CreateCard(item));
+        });
+
         let timer;
         let counter = time;
         function RunTime() {
-            $('#sorting-page > h1').html(counter);
+            $('#sorting-page #timer').html(counter);
             if(counter > 0) {
                 
-                console.log('counter: ', counter)
+                // console.log('counter: ', counter)
                 if(isSolved) {
                     clearTimeout(timer);
                     resolve(true);
@@ -107,8 +110,26 @@ async function ShowSortingPage() {
         RunTime();
         $('.game-page #sorting-page').show();
 
+        // make grid items sortable
+        // grid.sortable();
+        // console.log(Sortable);
+        console.log(grid);
+        new Sortable(grid.get(0), {
+            onSort: function(e) {
+                console.log('moving');
+            }
+        })
+
     });
     
+}
+
+function CreateCard(item) {
+    return `
+    <div class="cell flex-center">
+        <i class="fa-solid fa-${item}">
+        </i>
+    </div>`;
 }
 
 function ShowSucessPage() {

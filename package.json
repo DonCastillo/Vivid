@@ -28,6 +28,7 @@
     "jquery": "^3.6.1",
     "material-icons": "^1.12.0",
     "skeleton-elements": "^4.0.1",
+    "sortablejs": "^1.15.0",
     "swiper": "^8.4.4"
   },
   "devDependencies": {
