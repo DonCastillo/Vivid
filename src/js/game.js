@@ -12,6 +12,7 @@ let itemCount = 3;
 let playGame = true;
 let referenceItems = []; // {item: '', order: ''}
 let forSortingItems = [];
+let sortedItems = [];
 let isSolved = false; // if a given level is solved
 
 
@@ -116,18 +117,28 @@ async function ShowSortingPage() {
         RunTime();
         $('.game-page #sorting-page').show();
 
-        // make grid items sortable
-        // grid.sortable();
-        // console.log(Sortable);
-        console.log(grid);
+        console.log('parent: ', grid);
         new Sortable(grid.get(0), {
             onSort: function(e) {
-                console.log('moving');
+                sortedItems = grid.children('.cell').map(function(index, element) {
+                    return {item: $(this).attr('data-item'), order: index}
+                });
+
+
             }
         })
 
     });
     
+}
+
+
+function CheckMatch() {
+    
+}
+
+function GetSortedItems() {
+
 }
 
 function GetItems(itemCount) {
@@ -140,7 +151,7 @@ function GetItems(itemCount) {
 
 function CreateCard(item) {
     return `
-    <div class="cell flex-center" data-order="${item.order}">
+    <div class="cell flex-center" data-order="${item.order}" data-item="${item.item}">
         <i class="fa-solid fa-${item.item}">
         </i>
     </div>`;
