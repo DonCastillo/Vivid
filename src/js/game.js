@@ -10,7 +10,7 @@ let score = 0;
 let time = 10;
 let itemCount = 3;
 let playGame = true;
-let items = [];
+let items = []; // {item: '', order: ''}
 let isSolved = false; // if a given level is solved
 
 
@@ -38,7 +38,10 @@ function test() {
 async function Play() {
     while(playGame) {
         LevelConfig();
-        items = RandomItems(itemCount);
+        items = GetItems(itemCount);
+        console.log('items: ', items);
+
+
         if(await ShowReferencePage()) {
             // continue playing
             console.log('continue playing')
@@ -124,10 +127,18 @@ async function ShowSortingPage() {
     
 }
 
+function GetItems(itemCount) {
+    const randomItems = RandomItems(itemCount);
+    const orderedItems = randomItems.map(function(item, index){
+        return {item: item, order: index};
+    });
+    return orderedItems;
+}
+
 function CreateCard(item) {
     return `
-    <div class="cell flex-center">
-        <i class="fa-solid fa-${item}">
+    <div class="cell flex-center" data-order="${item.order}">
+        <i class="fa-solid fa-${item.item}">
         </i>
     </div>`;
 }
