@@ -123,8 +123,10 @@ async function ShowSortingPage() {
                 sortedItems = grid.children('.cell').map(function(index, element) {
                     return {item: $(this).attr('data-item'), order: index}
                 });
-
-
+                sortedItems = [...sortedItems]
+                console.log('referenceItems: ', referenceItems)
+                console.log('sortedItems: ', sortedItems)
+                console.log('isMatch: ', CheckMatch());
             }
         })
 
@@ -135,6 +137,10 @@ async function ShowSortingPage() {
 
 function CheckMatch() {
     
+    return sortedItems.every(function(item, index){
+        return item.item == referenceItems[index].item &&
+               item.order == referenceItems[index].order;
+    });
 }
 
 function GetSortedItems() {
