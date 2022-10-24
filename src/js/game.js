@@ -1,5 +1,5 @@
 import f7Dom from 'dom7';
-import { RandomItems, RandomColor } from './util';
+import { RandomItems, RandomColor, Shuffle } from './util';
 import Sortable from 'sortablejs'
 import 'jquery-sortablejs';
 import $ from 'jquery';
@@ -10,7 +10,8 @@ let score = 0;
 let time = 10;
 let itemCount = 3;
 let playGame = true;
-let items = []; // {item: '', order: ''}
+let referenceItems = []; // {item: '', order: ''}
+let forSortingItems = [];
 let isSolved = false; // if a given level is solved
 
 
@@ -38,9 +39,11 @@ function test() {
 async function Play() {
     while(playGame) {
         LevelConfig();
-        items = GetItems(itemCount);
-        console.log('items: ', items);
+        referenceItems = GetItems(itemCount);
+        forSortingItems = Shuffle([...referenceItems]);
 
+        console.log('referenceItems: ', referenceItems)
+        console.log('forSortingItems: ', forSortingItems)
 
         if(await ShowReferencePage()) {
             // continue playing
@@ -66,7 +69,7 @@ async function ShowReferencePage() {
         const grid = $('#reference-page > .grid');
         HideAllPageContent();
         grid.html();
-        items.forEach(function (item){
+        referenceItems.forEach(function (item){
             grid.append(CreateCard(item));
         });
         $('.game-page #reference-page').show();
@@ -84,7 +87,7 @@ async function ShowSortingPage() {
 
         // show all the grids
         grid.html();
-        items.forEach(function (item) {
+        forSortingItems.forEach(function (item) {
             grid.append(CreateCard(item));
         });
 
