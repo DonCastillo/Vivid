@@ -1,0 +1,46 @@
+.text-decoration-none {
+    color: unset;
+}
+.flex-center {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-page a.back {
+    background-color:pink;
+    margin:10px;
+}
+.game-intro-page .page-content {
+    padding-left:20px;
+    padding-right:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+}
+.game-page .page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.grid {
+    background-color: pink;
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+    width:100%;
+    flex-wrap:wrap;
+    max-width: 460px;
+}
+.cell {
+    padding:15px;
+    background-color: greenyellow;
+    font-size:2.25rem;
+    margin:10px;
+    height: 50px;
+    width: 50px;    
+}

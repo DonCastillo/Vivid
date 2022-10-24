@@ -1,0 +1,33 @@
+<template>
+    <div class="page game-page game-intro-page" data-name="lookarrange" style="background-color: yellowgreen;">
+        <!-- Top Navbar -->
+		<div style="background-color:orange;">
+            <a href="#" class="link icon-only back">
+                <i class="icon f7-icons if-not-md">arrow_left</i>
+                <i class="icon material-icons if-md">arrow_back</i>
+            </a>
+        </div>
+        <!-- Top Navbar -->
+
+        <!-- Page Content --> 
+        <div class="page-content">
+            <div class="block-title">
+                <h1>Look and Arrange</h1>
+            </div>
+            <div class="block">
+                You will be given a certain amount of time to view the
+            </div>
+            <div class="block">
+                <a href="/look-and-arrange/game" class="button button-fill button-round">
+                    Start
+                </a>
+            </div>
+        </div>
+        <!-- Page Content -->
+    </div>
+</template>
+<script>
+    export default () => {
+		return $render;
+	};
+</script>

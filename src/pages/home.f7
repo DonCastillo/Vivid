@@ -1,35 +1,43 @@
 <template>
-  <div class="page" data-name="home" style="background-color:orange;">
-    
-    <!-- Top Navbar -->
-    <div class="navbar navbar-large">
-      <div class="navbar-bg"></div>
-      <div class="navbar-inner sliding">
-        <div class="title">Vivid</div>
-        <div class="right">
-          <a href="/about" class="link icon-only">
-            <i class="icon f7-icons if-not-md">info_circle</i>
-            <i class="icon material-icons if-md">info</i>
-          </a>
-        </div>
-        <div class="title-large">
-          <div class="title-large-text">Vivid</div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Scrollable page content-->
-    <div class="page-content">
-      <div class="block block-strong">
-        <p>Here is your blank Framework7 app. Let's see what we have here.</p>
-        <p>Hello</p>
-      </div>
-    </div>
+	<div class="page" data-name="home">
+		<!-- Top Navbar -->
+		<div class="navbar navbar-large">
+			<div class="navbar-bg"></div>
+			<div class="navbar-inner sliding">
+				<div class="title">Vivid</div>
+				<div class="right">
+					<a href="/about" class="link icon-only">
+						<i class="icon f7-icons if-not-md">info_circle</i>
+						<i class="icon material-icons if-md">info</i>
+					</a>
+				</div>
+				<div class="title-large">
+					<div class="title-large-text">Vivid</div>
+				</div>
+			</div>
+		</div>
 
-  </div>
+		<!-- Scrollable page content-->
+		<div class="page-content">
+
+      <a href="/look-and-arrange/home">
+        <div class="card">
+          <div class="card-header">
+            Look and Arrange
+          </div>
+          <div class="card-content card-content-padding">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam laboriosam veritatis similique quae veniam, deleniti enim repudiandae modi impedit debitis est, cum temporibus, libero maxime placeat consequuntur ducimus sequi assumenda.
+          </div>
+        </div>
+      </a>
+      
+    </div>
+		<!-- Scrollable page content-->
+
+	</div>
 </template>
 <script>
-export default () => {
-  return $render;
-}
+	export default () => {
+		return $render;
+	};
 </script>
