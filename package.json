@@ -22,6 +22,8 @@
     "Samsung >= 12"
   ],
   "dependencies": {
+    "contrast": "^1.0.1",
+    "contrast-color": "^1.0.1",
     "dom7": "^4.0.4",
     "framework7": "^7.0.8",
     "framework7-icons": "^5.0.5",

@@ -1,5 +1,6 @@
 // import $$ from 'dom7';
 import Framework7, { getDevice } from './framework7-custom.js';
+import $ from 'jquery';
 
 // Import F7 Styles
 import '../css/framework7-custom.less';

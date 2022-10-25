@@ -7,7 +7,11 @@ import LookAndArrangeGame from '../pages/look-and-arrange/game.f7';
 var routes = [
   {
     path: '/',
-    component: LookAndArrangeGame,
+    component: HomePage,
+  },
+  {
+    path: '/home',
+    component: HomePage
   },
   {
     path: '/about',

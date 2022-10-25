@@ -1,3 +1,6 @@
+.block {
+    width:100%;
+}
 .text-decoration-none {
     color: unset;
 }
@@ -28,7 +31,6 @@
     padding-right: 10%;
 }
 .grid {
-    background-color: pink;
     display: inline-flex;
     justify-content: start;
     align-items: center;
@@ -38,9 +40,10 @@
 }
 .cell {
     padding:15px;
-    background-color: greenyellow;
     font-size:2.25rem;
     margin:10px;
     height: 50px;
-    width: 50px;    
+    width: 50px; 
+    color:white;   
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
