@@ -46,8 +46,14 @@ async function Play() {
 		LevelConfig();
 		SetBackground($('.gradient'));
         $('.level').text(level);
+
 		referenceItems = GetItems(itemCount);
-		forSortingItems = Shuffle([...referenceItems]);
+
+		// making sure the items are really shuffled
+		do {
+			forSortingItems = Shuffle([...referenceItems]);
+		} while(CheckMatch(referenceItems, forSortingItems));
+
 
 		console.log("referenceItems: ", referenceItems);
 		console.log("forSortingItems: ", forSortingItems);
@@ -94,7 +100,7 @@ async function Play() {
 
 async function ShowReferencePage() {
 	return new Promise(function (resolve, reject) {
-		const grid = $("#reference-page > .grid");
+		const grid = $("#reference-page .grid");
 		HideAllPageContent();
 		grid.html('');
 		referenceItems.forEach(function (item) {
@@ -109,7 +115,7 @@ async function ShowReferencePage() {
 
 async function ShowSortingPage() {
 	return new Promise(function (resolve, reject) {
-		const grid = $("#sorting-page > .grid");
+		const grid = $("#sorting-page .grid");
 		HideAllPageContent();
 
 		// show all the grids
@@ -155,18 +161,24 @@ async function ShowSortingPage() {
 				sortedItems = [...sortedItems];
 				console.log("referenceItems: ", referenceItems);
 				console.log("sortedItems: ", sortedItems);
-				console.log("isMatch: ", CheckMatch());
-				isSolved = CheckMatch();
+				console.log("isMatch: ", CheckMatch(referenceItems, sortedItems));
+				isSolved = CheckMatch(referenceItems, sortedItems);
 			},
 		});
 	});
 }
 
-function CheckMatch() {
-	return sortedItems.every(function (item, index) {
+/**
+ * 
+ * @param {array} arrayItems1 
+ * @param {array} arrayItems2 
+ * @returns true if 2 arrays are the same, otherwise false
+ */
+function CheckMatch(arrayItems1, arrayItems2) {
+	return arrayItems1.every(function (item, index) {
 		return (
-			item.item == referenceItems[index].item &&
-			item.order == referenceItems[index].order
+			item.item == arrayItems2[index].item &&
+			item.order == arrayItems2[index].order
 		);
 	});
 }
@@ -220,7 +232,7 @@ function HideAllPageContent() {
 function LevelConfig() {
 	if (level <= 3) {
 		itemCount = 3;
-		time = 10;
+		time = 100;
 	} else if (level <= 6) {
 		itemCount = 4;
 		time = 10;

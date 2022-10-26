@@ -20,7 +20,10 @@
                 <h1>Level <span class="level"></span></h1>
                 <p>Memorize the sequence of the items</p>
             </div>
-            <div class="grid"></div>
+            <div class="block">
+                <div class="grid"></div>
+
+            </div>
             <div class="block">
                 <button class="button button-fill button-round" id="startButton">
                     Let's Go
