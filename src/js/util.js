@@ -1,5 +1,6 @@
 import items from "./icons";
 import contrast from "contrast";
+import $ from "jquery";
 
 // https://bost.ocks.org/mike/shuffle/
 export function Shuffle(array) {
@@ -55,4 +56,8 @@ export function SetBackground(gradientEl) {
 	const bgColor2 = RandomBgColor();
 	gradientEl.css('background', bgColor1);
 	gradientEl.css('background', `linear-gradient(335deg, ${bgColor1}80 0%, ${bgColor2}80 100%)`);
+}
+
+export function SetLevel(displayEl, levelNum) {
+	displayEl.text(levelNum)
 }

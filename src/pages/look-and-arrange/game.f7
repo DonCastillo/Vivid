@@ -4,10 +4,10 @@
          data-name="look-and-arrange">
 
          <!-- Top Navbar -->
-		<div style="background-color:orange;">
-            <a href="#" class="link icon-only back">
-                <i class="icon f7-icons if-not-md">arrow_left</i>
-                <i class="icon material-icons if-md">arrow_back</i>
+		<div class="navbar display-flex justify-content-flex-end padding">
+            <a href="#" class="link icon-only">
+                <i class="icon f7-icons if-not-md">multiply</i>
+                <i class="icon material-icons if-md">close</i>
             </a>
         </div>
         <!-- Top Navbar -->

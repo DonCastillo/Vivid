@@ -1,19 +1,21 @@
 import f7Dom from "dom7";
-import { RandomItems, RandomColor, Shuffle, SetBackground } from "./util";
+import { RandomItems, RandomColor, Shuffle, SetBackground, SetLevel } from "./util";
 import Sortable from "sortablejs";
 import "jquery-sortablejs";
 import $ from "jquery";
 
 let level = 1;
-let score = 0;
 let time = 10;
 let itemCount = 3;
 let playGame = true;
-let referenceItems = []; // {item: '', order: ''}
-let forSortingItems = [];
-let sortedItems = [];
-let isSolved = false; // if a given level is solved
+let referenceItems = [];	// items to be referenced
+let forSortingItems = [];	// shuffled referenceItems
+let sortedItems = [];		// items sorted by the player
+let isSolved = false; 		// if a given level is solved
 let sortable;
+
+const GAME_PAGE = $('[data-name="look-and-arrange"]');
+
 
 $(document).ready(async function () {
 	if ($(".game-page#look-and-arrange").length > 0) {
@@ -45,7 +47,7 @@ async function Play() {
 
 		LevelConfig();
 		SetBackground($('.gradient'));
-        $('.level').text(level);
+		SetLevel($('.level'), level);
 
 		referenceItems = GetItems(itemCount);
 
@@ -100,7 +102,7 @@ async function Play() {
 
 
 async function ShowReferencePage() {
-	return new Promise(function (resolve, reject) {
+	return new Promise(function (resolve) {
 		const grid = $("#reference-page .grid");
 		HideAllPageContent();
 		grid.html('');
@@ -125,7 +127,7 @@ async function ShowSortingPage() {
 			grid.append(CreateCard(item));
 		});
 
-		const INTERVAL = 500;
+		const INTERVAL = 100;
 		let timer;
 		time = time * 1000;
 
@@ -240,33 +242,33 @@ function HideAllPageContent() {
 function LevelConfig() {
 	if (level <= 3) {
 		itemCount = 3;
-		time = 10;
+		time = 15;
 	} else if (level <= 6) {
 		itemCount = 4;
-		time = 10;
+		time = 15;
 	} else if (level <= 9) {
 		itemCount = 5;
-		time = 15;
+		time = 20;
 	} else if (level <= 12) {
 		itemCount = 6;
-		time = 15;
+		time = 20;
 	} else if (level <= 15) {
 		itemCount = 7;
-		time = 20;
+		time = 25;
 	} else if (level <= 18) {
 		itemCount = 8;
-		time = 20;
+		time = 25;
 	} else if (level <= 21) {
 		itemCount = 9;
-		time = 25;
+		time = 30;
 	} else if (level <= 24) {
 		itemCount = 10;
-		time = 30;
+		time = 35;
 	} else if (level <= 27) {
 		itemCount = 12;
-		time = 35;
+		time = 40;
 	} else {
 		itemCount = 15;
-		time = 60;
+		time = 90;
 	}
 }
