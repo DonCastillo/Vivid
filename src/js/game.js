@@ -59,6 +59,7 @@ async function Play() {
 		console.log("forSortingItems: ", forSortingItems);
 
 		if (await ShowReferencePage()) {
+			// executes when user pressed "Let's Go" Button
 			// continue playing
 			console.log("continue playing");
 
@@ -124,24 +125,34 @@ async function ShowSortingPage() {
 			grid.append(CreateCard(item));
 		});
 
+		const INTERVAL = 1000;
 		let timer;
 		let counter = time;
+
 		function RunTime() {
 			$("#sorting-page #timer").html(counter);
+			// console.log('counter: ', counter);
+			console.log('counter: ', counter);
+
+
 			if (counter > 0) {
-				// console.log('counter: ', counter)
 				if (isSolved) {
+					// level completed
 					clearTimeout(timer);
 					resolve(true);
 				} else {
-					timer = setTimeout(RunTime, 1000);
+					// continue playing until end of time
+					timer = setTimeout(RunTime, INTERVAL);
+					// counter = counter * 1000;
+					console.log
+					// counter = counter + 1000;
+
 				}
 			} else {
-				console.log("done");
+				// game over
 				clearTimeout(timer);
 				resolve(false);
 			}
-			counter--;
 		}
 
 		RunTime();
