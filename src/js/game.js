@@ -125,13 +125,13 @@ async function ShowSortingPage() {
 			grid.append(CreateCard(item));
 		});
 
-		const INTERVAL = 1000;
+		const INTERVAL = 500;
 		let timer;
-		let counter = time;
+		time = time * 1000;
 
 		function RunTime() {
+			let counter = Math.ceil(time / 1000);
 			$("#sorting-page #timer").html(counter);
-			// console.log('counter: ', counter);
 			console.log('counter: ', counter);
 
 
@@ -143,10 +143,7 @@ async function ShowSortingPage() {
 				} else {
 					// continue playing until end of time
 					timer = setTimeout(RunTime, INTERVAL);
-					// counter = counter * 1000;
-					console.log
-					// counter = counter + 1000;
-
+					time = time - INTERVAL;
 				}
 			} else {
 				// game over
@@ -243,7 +240,7 @@ function HideAllPageContent() {
 function LevelConfig() {
 	if (level <= 3) {
 		itemCount = 3;
-		time = 100;
+		time = 10;
 	} else if (level <= 6) {
 		itemCount = 4;
 		time = 10;
