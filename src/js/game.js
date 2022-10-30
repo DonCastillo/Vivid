@@ -237,23 +237,37 @@ function CreateCard(item) {
 
 async function ShowSucessPage() {
 	const successPage = $(GAME_PAGE).find("#success-page");
+	const closeButton = $(GAME_PAGE).find(".navbar a");
+	closeButton.attr('href', '/');
+	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
 		successPage.find(".level").text(level);
 		successPage.show();
 		successPage.find(".nextButton").on("click", () => resolve(true));
 		successPage.find(".exitButton").on("click", () => resolve(false));
+		closeButton.on('click', () => {
+			$(this).off();
+			resolve(false);
+		});
 	});
 }
 
 function ShowFailPage() {
 	const failPage = $(GAME_PAGE).find("#fail-page");
+	const closeButton = $(GAME_PAGE).find(".navbar a");
+	closeButton.attr('href', '/');
+	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
 		failPage.find(".level").text(level);
 		failPage.show();
 		failPage.find(".playAgainButton").on("click", () => resolve(true));
 		failPage.find(".exitButton").on("click", () => resolve(false));
+		closeButton.on('click', () => {
+			$(this).off();
+			resolve(false);
+		});
 	});
 }
 
