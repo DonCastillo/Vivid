@@ -1,5 +1,11 @@
 import f7Dom from "dom7";
-import { RandomItems, RandomColor, Shuffle, SetBackground, SetLevel } from "./util";
+import {
+	RandomItems,
+	RandomColor,
+	Shuffle,
+	SetBackground,
+	SetLevel,
+} from "./util";
 import Sortable from "sortablejs";
 import "jquery-sortablejs";
 import $ from "jquery";
@@ -8,54 +14,46 @@ let level = 1;
 let time = 10;
 let itemCount = 3;
 let playGame = true;
-let referenceItems = [];	// items to be referenced
-let forSortingItems = [];	// shuffled referenceItems
-let sortedItems = [];		// items sorted by the player
-let isSolved = false; 		// if a given level is solved
+let referenceItems = []; // items to be referenced
+let forSortingItems = []; // shuffled referenceItems
+let sortedItems = []; // items sorted by the player
+let isSolved = false; // if a given level is solved
 let sortable;
 
-const GAME_PAGE = $('[data-name="look-and-arrange"]');
+let GAME_PAGE = '.game-page[data-name="look-and-arrange"]';
 
-
-$(document).ready(async function () {
-	if ($(".game-page#look-and-arrange").length > 0) {
-		console.log("game page for look and arrange");
-		console.log("dom: ", f7Dom);
+/** initialize on page refresh */
+$(document).ready(async function (e) {
+	if ($(GAME_PAGE).length > 0) {
 		Play();
 	}
 });
 
-f7Dom(document).on(
-	"page:init",
-	'.page[data-name="look-and-arrange"]',
-	function (e) {
-		console.log("page initialized");
-		Play();
-	}
-);
-
+/** initialize on page navigation */
+f7Dom(document).on("page:init", GAME_PAGE, function (e) {
+	Play();
+});
 
 async function Play() {
 	level = 1;
 	playGame = true;
 
 	while (playGame) {
-        referenceItems = [];
-        forSortingItems = [];
-        sortedItems = [];
-        isSolved = false;
+		referenceItems = [];
+		forSortingItems = [];
+		sortedItems = [];
+		isSolved = false;
 
 		LevelConfig();
-		SetBackground($('.gradient'));
-		SetLevel($('.level'), level);
+		SetBackground($(".gradient"));
+		SetLevel($(".level"), level);
 
 		referenceItems = GetItems(itemCount);
 
 		// making sure the items are really shuffled
 		do {
 			forSortingItems = Shuffle([...referenceItems]);
-		} while(CheckMatch(referenceItems, forSortingItems));
-
+		} while (CheckMatch(referenceItems, forSortingItems));
 
 		console.log("referenceItems: ", referenceItems);
 		console.log("forSortingItems: ", forSortingItems);
@@ -65,64 +63,81 @@ async function Play() {
 			// continue playing
 			console.log("continue playing");
 
-            
-
 			if (await ShowSortingPage()) {
 				// success page
 				console.log("success..");
 				if (!(await ShowSucessPage())) {
-                    sortable.destroy();
+					sortable.destroy();
 					console.log("exiting game");
-                    playGame = false;
+					playGame = false;
 					break;
 				} else {
-                    sortable.destroy();
-                    playGame = true;
-                    level++;
-                    continue;
-                }
+					sortable.destroy();
+					playGame = true;
+					level++;
+					continue;
+				}
 			} else {
 				// fail page
 				console.log("fail..");
-                if (!(await ShowFailPage())) {
-                    sortable.destroy();
-                    console.log('exiting game');
-                    playGame = false;
-                    break;
-                } else {
-                    sortable.destroy();
-                    playGame = true;
-                    level = 1;
-                    continue;
-                }
+				if (!(await ShowFailPage())) {
+					sortable.destroy();
+					console.log("exiting game");
+					playGame = false;
+					break;
+				} else {
+					sortable.destroy();
+					playGame = true;
+					level = 1;
+					continue;
+				}
 			}
+		} else {
+			// close reference page
+			playGame = false;
+			level = 1;
+			break;
 		}
 	}
 }
 
-
 async function ShowReferencePage() {
+	const closeButton = $(GAME_PAGE).find(".navbar a");
+	console.log("close button: ", closeButton);
+	closeButton.attr("href", "/");
+
 	return new Promise(function (resolve) {
-		const grid = $("#reference-page .grid");
+		const referencePage = $(GAME_PAGE).find("#reference-page");
+		const grid = referencePage.find(".grid");
 		HideAllPageContent();
-		grid.html('');
+
+		// show reference items
+		grid.html("");
 		referenceItems.forEach(function (item) {
 			grid.append(CreateCard(item));
 		});
-		$(".game-page #reference-page").show();
-		$("button#startButton").on("click", function (e) {
+		referencePage.show();
+		referencePage.find("#startButton").on("click", function (e) {
 			resolve(true);
+		});
+		closeButton.on("click", function (e) {
+			$(this).off();
+			resolve(false);
 		});
 	});
 }
 
 async function ShowSortingPage() {
-	return new Promise(function (resolve, reject) {
-		const grid = $("#sorting-page .grid");
+	const closeButton = $(GAME_PAGE).find(".navbar a");
+	closeButton.attr("href", "#");
+
+	return new Promise(function (resolve) {
+		const sortingPage = $(GAME_PAGE).find("#sorting-page");
+		const grid = sortingPage.find(".grid");
 		HideAllPageContent();
 
-		// show all the grids
-		grid.html('');
+		// show items to be sorted
+		grid.html("");
 		forSortingItems.forEach(function (item) {
 			grid.append(CreateCard(item));
 		});
@@ -133,9 +148,8 @@ async function ShowSortingPage() {
 
 		function RunTime() {
 			let counter = Math.ceil(time / 1000);
-			$("#sorting-page #timer").html(counter);
-			console.log('counter: ', counter);
-
+			sortingPage.find("#timer").html(counter);
+			console.log("counter: ", counter);
 
 			if (counter > 0) {
 				if (isSolved) {
@@ -155,9 +169,8 @@ async function ShowSortingPage() {
 		}
 
 		RunTime();
-		$(".game-page #sorting-page").show();
+		sortingPage.show();
 
-		console.log("parent: ", grid);
 		sortable = new Sortable(grid.get(0), {
 			onSort: function (e) {
 				sortedItems = grid
@@ -171,17 +184,26 @@ async function ShowSortingPage() {
 				sortedItems = [...sortedItems];
 				console.log("referenceItems: ", referenceItems);
 				console.log("sortedItems: ", sortedItems);
-				console.log("isMatch: ", CheckMatch(referenceItems, sortedItems));
+				console.log(
+					"isMatch: ",
+					CheckMatch(referenceItems, sortedItems)
+				);
 				isSolved = CheckMatch(referenceItems, sortedItems);
 			},
+		});
+
+		closeButton.on("click", function (e) {
+			$(this).off();
+			clearTimeout(timer);
+			resolve(false);
 		});
 	});
 }
 
 /**
- * 
- * @param {array} arrayItems1 
- * @param {array} arrayItems2 
+ *
+ * @param {array} arrayItems1
+ * @param {array} arrayItems2
  * @returns true if 2 arrays are the same, otherwise false
  */
 function CheckMatch(arrayItems1, arrayItems2) {
@@ -196,8 +218,8 @@ function CheckMatch(arrayItems1, arrayItems2) {
 function GetItems(itemCount) {
 	const randomItems = RandomItems(itemCount);
 	const orderedItems = randomItems.map(function (item, index) {
-        const {bgColor, fgColor} = RandomColor();
-		return { item: item, order: index, bgColor: bgColor, fgColor: fgColor};
+		const { bgColor, fgColor } = RandomColor();
+		return { item: item, order: index, bgColor: bgColor, fgColor: fgColor };
 	});
 	return orderedItems;
 }
@@ -214,7 +236,7 @@ function CreateCard(item) {
 }
 
 async function ShowSucessPage() {
-	const successPage = $(".game-page #success-page");
+	const successPage = $(GAME_PAGE).find("#success-page");
 	return new Promise(function (resolve) {
 		HideAllPageContent();
 		successPage.find(".level").text(level);
@@ -225,7 +247,7 @@ async function ShowSucessPage() {
 }
 
 function ShowFailPage() {
-	const failPage = $(".game-page #fail-page");
+	const failPage = $(GAME_PAGE).find("#fail-page");
 	return new Promise(function (resolve) {
 		HideAllPageContent();
 		failPage.find(".level").text(level);
@@ -236,7 +258,7 @@ function ShowFailPage() {
 }
 
 function HideAllPageContent() {
-	$(".game-page .page-content").hide();
+	$(GAME_PAGE).find(".page-content").hide();
 }
 
 function LevelConfig() {

@@ -5,24 +5,27 @@
 
          <!-- Top Navbar -->
 		<div class="navbar display-flex justify-content-flex-end padding">
-            <a href="#" class="link icon-only">
-                <i class="icon f7-icons if-not-md">multiply</i>
-                <i class="icon material-icons if-md">close</i>
-            </a>
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="title"></div>
+                <div class="right">
+                    <a href="/" class="link icon-only">
+                        <i class="icon f7-icons if-not-md">multiply</i>
+                        <i class="icon material-icons if-md">close</i>
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- Top Navbar -->
 
         <!-- Page Content --> 
-        <div class="page-content" id="spinner"></div>
-
-        <div class="page-content gradient" id="reference-page">
+        <div class="page-content flex-center gradient" id="reference-page">
             <div class="block">
                 <h1>Level <span class="level"></span></h1>
                 <p>Memorize the sequence of the items</p>
             </div>
             <div class="block">
                 <div class="grid"></div>
-
             </div>
             <div class="block">
                 <button class="button button-fill button-round" id="startButton">
@@ -31,27 +34,35 @@
             </div>
         </div>
 
-        <div class="page-content gradient" id="sorting-page">
-            <h1>Level <span class="level"></span></h1>
-            <div id="timer"></div>
-            <div class="grid"></div>
+        <div class="page-content flex-center gradient" id="sorting-page">
+            <div class="block">
+                <h1>Level <span class="level"></span></h1>
+                <p>Reorder the items now!</p>
+                <div id="timer"></div>
+            </div>
+            <div class="block">
+                <div class="grid"></div>
+            </div>
         </div>
 
-        <div class="page-content gradient" id="success-page">
+        <div class="page-content flex-center gradient" id="success-page">
             <h1>Level <span class="level"></span> Completed!</h1>
             <a href="#" class="button button-fill button-round nextButton">Next</a>
             <a href="/" class="button button-fill button-round exitButton">Exit</a>
         </div>
 
-        <div class="page-content gradient" id="fail-page">
+        <div class="page-content flex-center gradient" id="fail-page">
             <h1>Level <span class="level"></span> Failed!</h1>
-            <a href="#" class="button button-fill button-round playAgainButton">Play Again</a>
-            <a href="/" class="button button-fill button-round exitButton">Exit</a>
+            <div class="row">
+                <div class="col">
+                    <a href="#" class="button button-fill button-round playAgainButton">Play Again</a>
+                </div>
+                <div class="col">
+                    <a href="/" class="button button-fill button-round exitButton">Exit</a>
+                </div>
+            </div>
         </div>
-
-
         <!-- Page Content --> 
-
 
     </div>
 </template>
