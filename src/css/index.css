@@ -47,7 +47,6 @@
 #flip-and-match .cell-wrapper {
     height: 80px;
     width: 80px; 
-    background-color: orange;
     margin: 4px;
 }
 #flip-and-match .cell {

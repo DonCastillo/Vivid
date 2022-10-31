@@ -145,6 +145,9 @@ async function ShowMatchingPage() {
 		}
 
         let cells = grid.find('.cell');
+        cells.find('.back-cover').show();
+        cells.find('.front-cover').hide();
+
         cells.on('click', function(e) {
             const cell = $(this);
 
@@ -153,6 +156,8 @@ async function ShowMatchingPage() {
                 if(cardsOpened.length <= 2) {
                     cardsOpened = [...cardsOpened, cell.attr('data-item') ];
                     cell.removeClass('closed').addClass('open');
+                    cell.find('.front-cover').show();
+                    cell.find('.back-cover').hide();
                 } 
                 
                 if(cardsOpened.length == 2) {
@@ -168,6 +173,8 @@ async function ShowMatchingPage() {
                         // check if all cards have been removed
                         if (cells.length > 0) {
                             cells.removeClass('open').addClass('closed');
+                            cells.find('.back-cover').show();
+                            cells.find('.front-cover').hide();
                             isSolved = false;
                         } else {
                             isSolved = true;   
@@ -246,10 +253,12 @@ function CreateCard(item) {
         <div class="cell flex-center closed" 
             data-item="${item.item}" 
             style="background-color: ${item.bgColor}; color: ${item.fgColor}">
-            <div class="cover flex-center">
+            <div class="back-cover cover flex-center">
                 <i class="fa-solid fa-question"></i>
             </div>
-            <i class="fa-solid fa-${item.item}"></i>
+            <div class="front-cover cover flex-center" style="display:none;">
+                <i class="fa-solid fa-${item.item}"></i>
+            </div>
         </div>
     </div>
     `;
