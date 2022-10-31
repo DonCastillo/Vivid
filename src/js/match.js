@@ -43,6 +43,8 @@ async function Play() {
         LevelConfig();
         SetBackground($(".gradient"));
         SetLevel($(".level"), level);
+        $(GAME_PAGE).find('.itemCount').text(itemCount);
+		$(GAME_PAGE).find('.timer').text(time);
 
         cards = GetItems(itemCount);
         console.log('cards: ', cards);
@@ -125,7 +127,7 @@ async function ShowMatchingPage() {
 
         function RunTime() {
 			let counter = Math.ceil(time / 1000);
-			matchingPage.find("#timer").html(counter);
+			matchingPage.find(".timer").html(counter);
 
 			if (counter > 0) {
 				if (isSolved) {
