@@ -6,9 +6,10 @@ import {
 	SetBackground,
 	SetLevel,
 } from "./util";
+// import $ from "jquery";
 import Sortable from "sortablejs";
 import "jquery-sortablejs";
-import $ from "jquery";
+
 
 let level = 1;
 let time = 10;
@@ -25,13 +26,13 @@ let GAME_PAGE = '.game-page[data-name="look-and-arrange"]';
 /** initialize on page refresh */
 $(document).ready(async function (e) {
 	if ($(GAME_PAGE).length > 0) {
-		Play();
+		await Play();
 	}
 });
 
 /** initialize on page navigation */
-f7Dom(document).on("page:init", GAME_PAGE, function (e) {
-	Play();
+f7Dom(document).on("page:init", GAME_PAGE, async function (e) {
+	await Play();
 });
 
 async function Play() {

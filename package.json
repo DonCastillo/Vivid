@@ -25,6 +25,7 @@
     "contrast": "^1.0.1",
     "contrast-color": "^1.0.1",
     "dom7": "^4.0.4",
+    "flip": "github:nnattawat/flip",
     "framework7": "^7.0.8",
     "framework7-icons": "^5.0.5",
     "jquery": "^3.6.1",

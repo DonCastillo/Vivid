@@ -3,6 +3,8 @@ import HomePage from '../pages/home.f7';
 import AboutPage from '../pages/about.f7';
 import LookAndArrangeHome from '../pages/look-and-arrange/home.f7';
 import LookAndArrangeGame from '../pages/look-and-arrange/game.f7';
+import FlipAndMatchHome from '../pages/flip-and-match/home.f7';
+import FlipAndMatchGame from '../pages/flip-and-match/game.f7';
 
 var routes = [
   {
@@ -24,6 +26,14 @@ var routes = [
   {
     path: '/look-and-arrange/game',
     component: LookAndArrangeGame
+  },
+  {
+    path: '/flip-and-match/home',
+    component: FlipAndMatchHome
+  },
+  {
+    path: '/flip-and-match/game',
+    component: FlipAndMatchGame
   }
 ];
 
