@@ -24,7 +24,7 @@
 			<a href="/look-and-arrange/home">
 				<div class="card">
 					<div class="card-header" >
-						<div class="bgImg" style="background-image:url('./assets/images/look-and-arrange.PNG');"></div>
+						<div class="bgImg" style="background-image:url('./static/images/look-and-arrange.PNG');"></div>
 						<div>
 							<h2>Arrange the Sequence</h2>
 						</div>
@@ -35,7 +35,7 @@
 			<a href="/flip-and-match/home">
 				<div class="card">
 					<div class="card-header">
-						<div class="bgImg" style="background-image:url('./assets/images/flip-and-match.PNG')"></div>
+						<div class="bgImg" style="background-image:url('./static/images/flip-and-match.PNG')"></div>
 						<div>
 							<h2>Reveal and Match</h2>
 						</div>
