@@ -271,7 +271,7 @@ function HideAllPageContent() {
 function LevelConfig() {
 	if (level <= 3) {
 		itemCount = 4;
-		time = 1500;
+		time = 15;
 	} else if (level <= 6) {
 		itemCount = 6;
 		time = 15;

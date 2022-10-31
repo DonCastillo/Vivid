@@ -1,0 +1,59 @@
+:root {
+    --f7-theme-color:   #5499c7;
+    --f7-theme-color-rgb:   84, 153, 199;
+    --f7-theme-color-shade:  #2980b9;
+    --f7-theme-color-tint:   #7fb3d5;
+    --f7-secondary-color: #27ae60;
+    --f7-secondary-color-rgb: 39, 174, 96;
+    --f7-secondary-color-shade:  #229954;
+    --f7-secondary-color-tint: #7dcea0;
+    --f7-color-red: #ff3b30;
+    --f7-color-red-rgb: 255, 59, 48;
+    --f7-color-red-shade: #ff1407;
+    --f7-color-red-tint: #ff6259;
+
+    
+    --f7-button-font-size: 1.25rem;
+    --f7-button-bg-color:  var(--f7-theme-color);
+    --f7-button-fill-bg-color: var(--f7-theme-color);
+    --f7-button-border-width: 2px;
+    --f7-button-outline-border-color: #fff;
+    --f7-button-border-color: #fff;
+    --f7-button-fill-text-color: #fff;
+    --f7-button-padding-vertical: 25px;
+    --f7-button-raised-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --f7-button-raised-pressed-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    --f7-card-content-padding-horizontal: 16px;
+    --f7-card-content-padding-vertical: 16px;
+    --f7-card-header-padding-horizontal: 16px;
+    /* --f7-card-header-padding-vertical: 60px; */
+    --f7-card-border-radius: 0;
+
+    --f7-block-title-line-height: 2rem;
+
+    --f7-block-font-size: inherit;
+    --f7-block-text-color: inherit;
+}
+
+.text-white {
+    color:#fff;
+}
+.text-primary {
+    color: var(--f7-theme-color);
+}
+.bg-primary {
+    background-color: var(--f7-theme-color);
+}
+.text-secondary {
+    color: var(--f7-secondary-color);
+}
+.bg-secondary {
+    background-color: var(--f7-secondary-color);
+}
+.card {
+    color: #fff;
+}
+.card-header {
+    height: 30vh;
+}

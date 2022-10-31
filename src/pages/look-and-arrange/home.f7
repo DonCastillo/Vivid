@@ -1,5 +1,5 @@
 <template>
-    <div class="page game-intro-page">
+    <div class="page game-intro-page" id="look-and-arrange-intro">
         <!-- Top Navbar -->
 		<div class="navbar padding">
             <div class="navbar-bg"></div>
@@ -18,13 +18,13 @@
         <!-- Page Content --> 
         <div class="page-content flex-center">
             <div class="block-title">
-                <h1>Look and Arrange</h1>
+                <h1>Arrange the <br />Sequence</h1>
             </div>
             <div class="block">
-                You will be given a certain amount of time to view the
+                <p>Replicate the sequence of items under a specified time.</p>
             </div>
             <div class="block">
-                <a href="/look-and-arrange/game" class="button button-fill button-round">
+                <a href="/look-and-arrange/game" class="button button-fill button-round heartbeat">
                     Start
                 </a>
             </div>

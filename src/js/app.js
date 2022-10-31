@@ -5,15 +5,16 @@ import Framework7, { getDevice } from './framework7-custom.js';
 import '../css/framework7-custom.less';
 
 // Import Icons and App Custom Styles
+import '../css/theme.css';
 import '../css/icons.css';
 import '../css/app.less';
+import '../css/animation.css';
+import '../css/index.css';
 // Import Cordova APIs
 import cordovaApp from './cordova-app.js';
 
 // Import Routes
 import routes from './routes.js';
-// Import Store
-import store from './store.js';
 
 // Import main app component
 import App from '../app.f7';
@@ -25,8 +26,6 @@ var app = new Framework7({
   el: '#app', // App root element
   component: App, // App main component
   id: 'io.framework7.myapp', // App bundle ID
-  // App store
-  store: store,
   // App routes
   routes: routes,
 

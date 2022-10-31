@@ -1,5 +1,5 @@
 <template>
-	<div class="page" data-name="home">
+	<div class="page" id="home" data-name="home">
 		<!-- Top Navbar -->
 		<div class="navbar navbar-large">
 			<div class="navbar-bg"></div>
@@ -20,18 +20,32 @@
 		<!-- Scrollable page content-->
 		<div class="page-content">
 
-      <a href="/look-and-arrange/home">
-        <div class="card">
-          <div class="card-header">
-            Look and Arrange
-          </div>
-          <div class="card-content card-content-padding">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam laboriosam veritatis similique quae veniam, deleniti enim repudiandae modi impedit debitis est, cum temporibus, libero maxime placeat consequuntur ducimus sequi assumenda.
-          </div>
-        </div>
-      </a>
-      
-    </div>
+			
+			<a href="/look-and-arrange/home">
+				<div class="card">
+					<div class="card-header" >
+						<div class="bgImg" style="background-image:url('./assets/images/look-and-arrange.PNG');"></div>
+						<div>
+							<h2>Arrange the Sequence</h2>
+						</div>
+					</div>
+				</div>
+			</a>
+
+			<a href="/flip-and-match/home">
+				<div class="card">
+					<div class="card-header">
+						<div class="bgImg" style="background-image:url('./assets/images/flip-and-match.PNG')"></div>
+						<div>
+							<h2>Reveal and Match</h2>
+						</div>
+
+						
+					</div>
+				</div>
+			</a>
+
+		</div>
 		<!-- Scrollable page content-->
 
 	</div>

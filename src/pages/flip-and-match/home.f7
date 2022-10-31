@@ -23,7 +23,7 @@
             <div class="block">
             </div>
             <div class="block">
-                <a href="/flip-and-match/game" class="button button-fill button-round">
+                <a href="/flip-and-match/game" class="button button-fill button-round heartbeat">
                     Start
                 </a>
             </div>

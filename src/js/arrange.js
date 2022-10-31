@@ -201,12 +201,7 @@ async function ShowSortingPage() {
 	});
 }
 
-/**
- *
- * @param {array} arrayItems1
- * @param {array} arrayItems2
- * @returns true if 2 arrays are the same, otherwise false
- */
+
 function CheckMatch(arrayItems1, arrayItems2) {
 	return arrayItems1.every(function (item, index) {
 		return (
@@ -278,7 +273,7 @@ function HideAllPageContent() {
 
 function LevelConfig() {
 	if (level <= 3) {
-		itemCount = 3;
+		itemCount = 4;
 		time = 15;
 	} else if (level <= 6) {
 		itemCount = 4;
