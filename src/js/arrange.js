@@ -6,7 +6,7 @@ import {
 	SetBackground,
 	SetLevel,
 } from "./util";
-// import $ from "jquery";
+import $ from "jquery";
 import Sortable from "sortablejs";
 import "jquery-sortablejs";
 
@@ -48,6 +48,8 @@ async function Play() {
 		LevelConfig();
 		SetBackground($(".gradient"));
 		SetLevel($(".level"), level);
+		$(GAME_PAGE).find('.itemCount').text(itemCount);
+		$(GAME_PAGE).find('.timer').text(time);
 
 		referenceItems = GetItems(itemCount);
 
@@ -149,7 +151,7 @@ async function ShowSortingPage() {
 
 		function RunTime() {
 			let counter = Math.ceil(time / 1000);
-			sortingPage.find("#timer").html(counter);
+			sortingPage.find(".timer").html(counter);
 			console.log("counter: ", counter);
 
 			if (counter > 0) {
@@ -273,7 +275,7 @@ function HideAllPageContent() {
 
 function LevelConfig() {
 	if (level <= 3) {
-		itemCount = 4;
+		itemCount = 3;
 		time = 15;
 	} else if (level <= 6) {
 		itemCount = 4;

@@ -57,3 +57,6 @@
 .card-header {
     height: 30vh;
 }
+.bg-red {
+    background-color: var(--f7-color-red);
+}

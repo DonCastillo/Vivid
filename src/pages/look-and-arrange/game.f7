@@ -19,55 +19,88 @@
         <!-- Top Navbar -->
 
         <!-- Page Content --> 
-        <div class="page-content flex-center gradient" id="reference-page">
-            <div class="block">
-                <h1>Level <span class="level"></span></h1>
-                <p>Memorize the sequence of the items</p>
-            </div>
-            <div class="block">
-                <div class="grid"></div>
-            </div>
-            <div class="block">
-                <button class="button button-fill button-round heartbeat" id="startButton">
-                    Let's Go
-                </button>
-            </div>
-        </div>
 
-        <div class="page-content flex-center gradient" id="sorting-page">
-            <div class="block">
-                <h1>Level <span class="level"></span></h1>
-                <p>Reorder the items now!</p>
-                <div id="timer"></div>
+        <!-- REFERENCE PAGE -->
+            <div class="page-content flex-center gradient" id="reference-page">
+                <div class="block text-align-center">
+                    <h1>Level <span class="level"></span></h1>
+                    <p>Memorize the sequence of the items</p>
+                </div>
+                <div class="block text-align-center">
+                    <div class="row justify-content-space-evenly align-content-center">
+                        <div class="col-50">
+                            <div>
+                                <div><i class="fa-solid fa-grip margin-right"></i><small>Items</small></div>
+                                <h2 class="itemCount no-margin-vertical"></div>
+                            </div>
+                        </div>
+                        <div class="col-50">
+                            <div>
+                                <div><i class="fa-regular fa-clock margin-right"></i><small>Time</small></div>
+                                <h2 class="timer no-margin-vertical"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="grid"></div>
+                </div>
+                <div class="block">
+                    <button class="button button-fill button-round heartbeat" id="startButton">
+                        Let's Go
+                    </button>
+                </div>
             </div>
-            <div class="block">
-                <div class="grid"></div>
-            </div>
-        </div>
+        <!-- REFERENCE PAGE -->
 
-        <div class="page-content flex-center gradient" id="success-page">
-            <h1>Level <span class="level"></span> Completed!</h1>
-            <div class="row">
-                <div class="col">
-                    <a href="/" class="button button-fill button-round exitButton">Exit</a>
-                </div>
-                <div class="col">
-                    <a href="#" class="button button-fill button-round nextButton">Next</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="page-content flex-center gradient" id="fail-page">
-            <h1>Level <span class="level"></span> Failed!</h1>
-            <div class="row">
-                <div class="col">
-                    <a href="/" class="button button-fill button-round exitButton">Exit</a>
+        <!-- SORTING PAGE -->
+            <div class="page-content flex-center gradient" id="sorting-page">
+                <div class="block text-align-center">
+                    <h1>Level <span class="level"></span></h1>
+                    <p>Reorder the items now!</p>
+                    <div>
+                        <div><i class="fa-regular fa-clock margin-right"></i><small>Time Left</small></div>
+                        <h2 class="timer no-margin-vertical"></div>
+                    </div>
                 </div>
-                <div class="col">
-                    <a href="#" class="button button-fill button-round playAgainButton">Play Again</a>
+                <div class="block">
+                    <div class="grid"></div>
                 </div>
             </div>
-        </div>
+        <!-- SORTING PAGE -->
+
+
+        <!-- SUCCESS PAGE -->
+            <div class="page-content flex-center gradient" id="success-page">
+                <h1>Level <span class="level"></span> Completed!</h1>
+                <div class="row">
+                    <div class="col">
+                        <a href="/" class="button button-fill button-round exitButton bg-red">Exit</a>
+                    </div>
+                    <div class="col">
+                        <a href="#" class="button button-fill button-round nextButton">Next</a>
+                    </div>
+                </div>
+            </div>
+        <!-- SUCCESS PAGE -->
+
+
+        <!-- FAIL PAGE -->
+            <div class="page-content flex-center gradient" id="fail-page">
+                <h1>Level <span class="level"></span> Failed!</h1>
+                <div class="row">
+                    <div class="col">
+                        <a href="/" class="button button-fill button-round exitButton bg-red">Exit</a>
+                    </div>
+                    <div class="col">
+                        <a href="#" class="button button-fill button-round playAgainButton">Play Again</a>
+                    </div>
+                </div>
+            </div>
+        <!-- FAIL PAGE -->
+
+
         <!-- Page Content --> 
 
     </div>
