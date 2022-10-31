@@ -226,12 +226,13 @@ function GetItems(itemCount) {
 
 function CreateCard(item) {
 	return `
-    <div class="cell flex-center" 
+    <div class="cell" 
          data-order="${item.order}" 
          data-item="${item.item}" 
          style="background-color: ${item.bgColor}; color: ${item.fgColor}">
-        <i class="fa-solid fa-${item.item}">
-        </i>
+		<div class="cell-inner flex-center">
+        	<i class="fa-solid fa-${item.item}"></i>
+		</div>
     </div>`;
 }
 

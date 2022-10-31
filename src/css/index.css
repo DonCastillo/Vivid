@@ -43,14 +43,20 @@ h1 {
 .game-intro-page .page-content > *,
 .game-page .page-content > * {
     width:100%;
+
 }
 .grid {
+    max-width: 460px;
+    width:100%;
+}
+#flip-and-match #matching-page .grid {
     display: inline-flex;
     justify-content: start;
     align-items: center;
-    width:100%;
     flex-wrap:wrap;
-    max-width: 460px;
+}
+#look-and-arrange #sorting-page .grid {
+    display: inline-block;
 }
 #home .page-content {
     background-color: var(--f7-secondary-color-tint);
@@ -78,6 +84,7 @@ h1 {
 }
 #look-and-arrange-intro .cell,
 #look-and-arrange .cell {
+    display:inline-block;
     position:relative;
     padding:15px;
     font-size:2.25rem;
@@ -86,6 +93,10 @@ h1 {
     width: 50px; 
     color:white;   
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#look-and-arrange .cell .cell-inner {
+    width:100%;
+    height:100%;
 }
 #flip-and-match .cell-wrapper {
     height: 80px;
