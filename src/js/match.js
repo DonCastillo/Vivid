@@ -6,7 +6,6 @@ import {
 	SetBackground,
 	SetLevel,
 } from "./util";
-import "flip/dist/jquery.flip";
 
 let level = 1;
 let time = 15;
@@ -22,7 +21,7 @@ let GAME_PAGE = '.game-page[data-name="flip-and-match"]';
 
 /** initialize on page refresh */
 $(document).ready(async function (e) {
-	if (jQuery(GAME_PAGE).length > 0) {
+	if ($(GAME_PAGE).length > 0) {
 		Play();
 	}
 });
@@ -50,16 +49,15 @@ async function Play() {
 
         if(await ShowReferencePage()) {
             // executes when user pressed "Let's Go" Button
-            console.log("continue playing ...");
-
             if(await ShowMatchingPage()) {
                 // success page
                 console.log("success...");
                 if (!(await ShowSucessPage())) {
-                    console.log('exiting the game');
+                    // exit game
                     playGame = false;
                     break;
                 } else {
+                    // next level
                     playGame = true;
                     level++;
                     continue;
@@ -68,10 +66,11 @@ async function Play() {
                 // fail page
                 console.log("fail...");
                 if (!(await ShowFailPage())) {
-					console.log("exiting game");
+                    // exit game
 					playGame = false;
 					break;
 				} else {
+                    // play again
 					playGame = true;
 					level = 1;
 					continue;
@@ -84,14 +83,11 @@ async function Play() {
             break;
         }
     }
-    console.log('playing flip and match');
-    // console.log('game page: ', $(GAME_PAGE))
 }
 
 
 async function ShowReferencePage() {
 	const closeButton = $(GAME_PAGE).find(".navbar a");
-	console.log("close button: ", closeButton);
 	closeButton.attr("href", "/");
 
 	return new Promise(function (resolve) {
@@ -130,7 +126,6 @@ async function ShowMatchingPage() {
         function RunTime() {
 			let counter = Math.ceil(time / 1000);
 			matchingPage.find("#timer").html(counter);
-			// console.log("counter: ", counter);
 
 			if (counter > 0) {
 				if (isSolved) {
@@ -139,7 +134,6 @@ async function ShowMatchingPage() {
 					resolve(true);
 				} else {
 					// continue playing until end of time
-                    console.log('isSolved: ', isSolved);
 					timer = setTimeout(RunTime, INTERVAL);
 					time = time - INTERVAL;
 				}
@@ -150,16 +144,15 @@ async function ShowMatchingPage() {
 			}
 		}
 
-        let cell = grid.children('.cell');
-        cell.on('click', function(e) {
-            const card = $(this);
+        let cells = grid.find('.cell');
+        cells.on('click', function(e) {
+            const cell = $(this);
 
-            if(card.hasClass('closed')) {
+            if(cell.hasClass('closed')) {
                 
                 if(cardsOpened.length <= 2) {
-                    cardsOpened = [...cardsOpened, card.attr('data-item') ];
-                    card.removeClass('closed').addClass('open');
-                    console.log(cardsOpened);
+                    cardsOpened = [...cardsOpened, cell.attr('data-item') ];
+                    cell.removeClass('closed').addClass('open');
                 } 
                 
                 if(cardsOpened.length == 2) {
@@ -168,14 +161,13 @@ async function ShowMatchingPage() {
                         // check if the 2 opened cards match
                         if(cardsOpened[0] == cardsOpened[1]) {
                             // if match, remove card
-                            grid.find(`[data-item=${cardsOpened[0]}]`).remove();
-                            cell = grid.children('.cell');
+                            grid.find(`.cell[data-item=${cardsOpened[0]}]`).remove();
+                            cells = grid.find('.cell');
                         }
 
-                        console.log('cell: ', cell)
                         // check if all cards have been removed
-                        if (cell.length > 0) {
-                            cell.removeClass('open').addClass('closed');
+                        if (cells.length > 0) {
+                            cells.removeClass('open').addClass('closed');
                             isSolved = false;
                         } else {
                             isSolved = true;   
@@ -183,12 +175,10 @@ async function ShowMatchingPage() {
                         
                         cardsOpened = [];
                         clearTimeout(timerCloseAll);
-                    }, 500);
+                    }, 200);
                 }       
             }
         });
-        
-        
 
         RunTime();
         matchingPage.show();
@@ -252,14 +242,17 @@ function GetItems(itemCount) {
 
 function CreateCard(item) {
     return `
-    <div class="cell flex-center closed" 
-         data-item="${item.item}" 
-         style="background-color: ${item.bgColor}; color: ${item.fgColor}">
-         <div class="cover flex-center">
-            <i class="fa-solid fa-question"></i>
-         </div>
-        <i class="fa-solid fa-${item.item}"></i>
-    </div>`;
+    <div class="cell-wrapper">
+        <div class="cell flex-center closed" 
+            data-item="${item.item}" 
+            style="background-color: ${item.bgColor}; color: ${item.fgColor}">
+            <div class="cover flex-center">
+                <i class="fa-solid fa-question"></i>
+            </div>
+            <i class="fa-solid fa-${item.item}"></i>
+        </div>
+    </div>
+    `;
 }
 
 function HideAllPageContent() {

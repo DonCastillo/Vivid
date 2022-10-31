@@ -39,9 +39,7 @@
                 <div id="timer"></div>
             </div>
             <div class="block">
-                <div class="grid">
-                    
-                </div>
+                <div class="grid"></div>
             </div>
         </div>
 

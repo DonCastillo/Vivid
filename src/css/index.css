@@ -34,7 +34,7 @@
     flex-wrap:wrap;
     max-width: 460px;
 }
-.cell {
+#look-and-arrange .cell {
     position:relative;
     padding:15px;
     font-size:2.25rem;
@@ -44,7 +44,20 @@
     color:white;   
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.cell.closed .cover {
+#flip-and-match .cell-wrapper {
+    height: 80px;
+    width: 80px; 
+    background-color: orange;
+    margin: 4px;
+}
+#flip-and-match .cell {
+    position:relative;
+    height:100%;
+    width:100%;
+    font-size:2.25rem;
+
+}
+#flip-and-match .cell.closed .cover {
     position: absolute;
     top: 0;
     left: 0;
