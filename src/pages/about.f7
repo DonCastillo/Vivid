@@ -3,7 +3,6 @@
 
 		<!-- Top Navbar -->
 		<div class="navbar navbar-large">
-			<div class="navbar-bg"></div>
 			<div class="navbar-inner sliding">
 				<div class="left">
 					<a href="#" class="link icon-only back">

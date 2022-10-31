@@ -175,6 +175,8 @@ async function ShowSortingPage() {
 		sortingPage.show();
 
 		sortable = new Sortable(grid.get(0), {
+			swapThreshold: 1,
+			animation: 150,
 			onSort: function (e) {
 				sortedItems = grid
 					.children(".cell")
@@ -275,8 +277,8 @@ function HideAllPageContent() {
 
 function LevelConfig() {
 	if (level <= 3) {
-		itemCount = 3;
-		time = 15;
+		itemCount = 4;
+		time = 1500;
 	} else if (level <= 6) {
 		itemCount = 4;
 		time = 15;

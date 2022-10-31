@@ -5,7 +5,6 @@
 
          <!-- Top Navbar -->
 		<div class="navbar display-flex justify-content-flex-end padding">
-            <div class="navbar-bg"></div>
             <div class="navbar-inner sliding">
                 <div class="title"></div>
                 <div class="right">

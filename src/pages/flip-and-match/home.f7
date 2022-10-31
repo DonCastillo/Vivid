@@ -2,7 +2,6 @@
     <div class="page game-intro-page">
         <!-- Top Navbar -->
 		<div class="navbar padding">
-            <div class="navbar-bg"></div>
             <div class="navbar-inner sliding">
                 <div class="left">
                     <a href="#" class="link icon-only back">
