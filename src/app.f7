@@ -5,7 +5,7 @@
 
   <!-- Your main view, should have "view-main" class -->
   <div class="view view-main view-init safe-areas" 
-       data-name="main" data-url="/flip-and-match/game"></div>
+       data-name="main" data-url="/"></div>
 
   </div>
 </template>

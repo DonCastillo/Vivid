@@ -18,17 +18,18 @@ let cardsOpened = [];
 
 
 let GAME_PAGE = '.game-page[data-name="flip-and-match"]';
+let CLOSE_BUTTON = ".navbar a";
 
 /** initialize on page refresh */
 $(document).ready(async function (e) {
 	if ($(GAME_PAGE).length > 0) {
-		Play();
+		await Play();
 	}
 });
 
 /** initialize on page navigation */
-f7Dom(document).on("page:init", GAME_PAGE, function (e) {
-	Play();
+f7Dom(document).on("page:init", GAME_PAGE, async function (e) {
+	await Play();
 });
 
 
@@ -89,8 +90,7 @@ async function Play() {
 
 
 async function ShowReferencePage() {
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr("href", "/");
+	$(CLOSE_BUTTON).attr("href", "/");
 
 	return new Promise(function (resolve) {
 		const referencePage = $(GAME_PAGE).find("#reference-page");
@@ -99,7 +99,7 @@ async function ShowReferencePage() {
 		referencePage.find("#startButton").on("click", function (e) {
 			resolve(true);
 		});
-		closeButton.on("click", function (e) {
+		$(CLOSE_BUTTON).on("click", function (e) {
 			$(this).off();
 			resolve(false);
 		});
@@ -107,8 +107,7 @@ async function ShowReferencePage() {
 }
 
 async function ShowMatchingPage() {
-    const closeButton = $(GAME_PAGE).find(".navbar a");
-    closeButton.attr("href", "#");
+    $(CLOSE_BUTTON).attr("href", "#");
 
     return new Promise(function (resolve) {
         const matchingPage = $(GAME_PAGE).find("#matching-page");
@@ -192,7 +191,7 @@ async function ShowMatchingPage() {
         RunTime();
         matchingPage.show();
 
-        closeButton.on("click", function (e) {
+        $(CLOSE_BUTTON).on("click", function (e) {
 			$(this).off();
 			clearTimeout(timer);
 			resolve(false);
@@ -204,8 +203,7 @@ async function ShowMatchingPage() {
 
 async function ShowSucessPage() {
 	const successPage = $(GAME_PAGE).find("#success-page");
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr('href', '/');
+	$(CLOSE_BUTTON).attr("href", "/");
 	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
@@ -213,7 +211,7 @@ async function ShowSucessPage() {
 		successPage.show();
 		successPage.find(".nextButton").on("click", () => resolve(true));
 		successPage.find(".exitButton").on("click", () => resolve(false));
-		closeButton.on('click', () => {
+		$(CLOSE_BUTTON).on('click', () => {
 			$(this).off();
 			resolve(false);
 		});
@@ -223,8 +221,7 @@ async function ShowSucessPage() {
 
 function ShowFailPage() {
 	const failPage = $(GAME_PAGE).find("#fail-page");
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr('href', '/');
+	$(CLOSE_BUTTON).attr('href', '/');
 	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
@@ -232,7 +229,7 @@ function ShowFailPage() {
 		failPage.show();
 		failPage.find(".playAgainButton").on("click", () => resolve(true));
 		failPage.find(".exitButton").on("click", () => resolve(false));
-		closeButton.on('click', () => {
+		$(CLOSE_BUTTON).on('click', () => {
 			$(this).off();
 			resolve(false);
 		});

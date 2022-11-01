@@ -22,6 +22,7 @@ let isSolved = false; // if a given level is solved
 let sortable;
 
 let GAME_PAGE = '.game-page[data-name="look-and-arrange"]';
+let CLOSE_BUTTON = ".navbar a";
 
 /** initialize on page refresh */
 $(document).ready(async function (e) {
@@ -105,9 +106,8 @@ async function Play() {
 }
 
 async function ShowReferencePage() {
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	console.log("close button: ", closeButton);
-	closeButton.attr("href", "/");
+	$(CLOSE_BUTTON).attr("href", "/");
+	console.log($(CLOSE_BUTTON));
 
 	return new Promise(function (resolve) {
 		const referencePage = $(GAME_PAGE).find("#reference-page");
@@ -123,7 +123,7 @@ async function ShowReferencePage() {
 		referencePage.find("#startButton").on("click", function (e) {
 			resolve(true);
 		});
-		closeButton.on("click", function (e) {
+		$(CLOSE_BUTTON).on("click", function (e) {
 			$(this).off();
 			resolve(false);
 		});
@@ -131,8 +131,7 @@ async function ShowReferencePage() {
 }
 
 async function ShowSortingPage() {
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr("href", "#");
+	$(CLOSE_BUTTON).attr("href", "#");
 
 	return new Promise(function (resolve) {
 		const sortingPage = $(GAME_PAGE).find("#sorting-page");
@@ -197,7 +196,7 @@ async function ShowSortingPage() {
 			},
 		});
 
-		closeButton.on("click", function (e) {
+		$(CLOSE_BUTTON).on("click", function (e) {
 			$(this).off();
 			clearTimeout(timer);
 			resolve(false);
@@ -225,8 +224,7 @@ function GetItems(itemCount) {
 }
 
 function CreateCard(item) {
-	return `
-    <div class="cell" 
+	return `<div class="cell" 
          data-order="${item.order}" 
          data-item="${item.item}" 
          style="background-color: ${item.bgColor}; color: ${item.fgColor}">
@@ -238,8 +236,7 @@ function CreateCard(item) {
 
 async function ShowSucessPage() {
 	const successPage = $(GAME_PAGE).find("#success-page");
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr('href', '/');
+	$(CLOSE_BUTTON).attr("href", "/");
 	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
@@ -247,7 +244,7 @@ async function ShowSucessPage() {
 		successPage.show();
 		successPage.find(".nextButton").on("click", () => resolve(true));
 		successPage.find(".exitButton").on("click", () => resolve(false));
-		closeButton.on('click', () => {
+		$(CLOSE_BUTTON).on('click', () => {
 			$(this).off();
 			resolve(false);
 		});
@@ -256,8 +253,7 @@ async function ShowSucessPage() {
 
 function ShowFailPage() {
 	const failPage = $(GAME_PAGE).find("#fail-page");
-	const closeButton = $(GAME_PAGE).find(".navbar a");
-	closeButton.attr('href', '/');
+	$(CLOSE_BUTTON).attr("href", "/");
 	
 	return new Promise(function (resolve) {
 		HideAllPageContent();
@@ -265,7 +261,7 @@ function ShowFailPage() {
 		failPage.show();
 		failPage.find(".playAgainButton").on("click", () => resolve(true));
 		failPage.find(".exitButton").on("click", () => resolve(false));
-		closeButton.on('click', () => {
+		$(CLOSE_BUTTON).on('click', () => {
 			$(this).off();
 			resolve(false);
 		});
@@ -278,8 +274,8 @@ function HideAllPageContent() {
 
 function LevelConfig() {
 	if (level <= 3) {
-		itemCount = 4;
-		time = 1500;
+		itemCount = 3;
+		time = 15;
 	} else if (level <= 6) {
 		itemCount = 4;
 		time = 15;
