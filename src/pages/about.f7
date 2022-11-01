@@ -21,15 +21,17 @@
 
         <!-- Page Content --> 
         <div class="page-content">
-            <div class="block block-strong">
+			<div class="block">
+				<img src="./static/images/logo.png" alt="App Logo" style="width:100%;" />
+			</div>
+            <div class="block">
                 Don't be bored anymore. Vivid is a collection of memory game applets.
             </div>
+			<div class="block">
+				Created by Don Castillo
+			</div>
         </div>
         <!-- Page Content -->
-
-        
-
-
 	</div>
 </template>
 <script>

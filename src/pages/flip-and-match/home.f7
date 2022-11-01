@@ -17,9 +17,10 @@
         <!-- Page Content --> 
         <div class="page-content flex-center">
             <div class="block-title text-align-center">
-                <h1>Flip and Match</h1>
+                <h1>Reveal and <br />Match</h1>
             </div>
-            <div class="block">
+            <div class="block text-align-center">
+                <p>Reveal items and match them.</p>
             </div>
             <div class="block">
                 <a href="/flip-and-match/game" class="button button-fill button-round heartbeat">

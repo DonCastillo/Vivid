@@ -10,9 +10,7 @@
 						<i class="icon material-icons if-md">info</i>
 					</a>
 				</div>
-				<div class="title-large">
-					<div class="title-large-text">Vivid</div>
-				</div>
+				
 			</div>
 		</div>
 
@@ -38,8 +36,6 @@
 						<div>
 							<h2>Reveal and Match</h2>
 						</div>
-
-						
 					</div>
 				</div>
 			</a>

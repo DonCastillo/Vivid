@@ -20,7 +20,7 @@
                 <h1>Arrange the <br />Sequence</h1>
             </div>
             <div class="block text-align-center">
-                <p>Replicate the sequence of items under a specified time.</p>
+                <p>Replicate the sequence of items within a specified time.</p>
             </div>
             <div class="block">
                 <a href="/look-and-arrange/game" class="button button-fill button-round heartbeat">

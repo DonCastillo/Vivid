@@ -23,7 +23,7 @@
             <div class="page-content flex-center gradient" id="reference-page">
                 <div class="block text-align-center">
                     <h1>Level <span class="level"></span></h1>
-                    <p>Memorize the sequence of the items</p>
+                    <p>Memorize the sequence of the items.</p>
                 </div>
                 <div class="block text-align-center">
                     <div class="row justify-content-space-evenly align-content-center">
