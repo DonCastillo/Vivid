@@ -56,7 +56,7 @@
                     <h1>Level <span class="level"></span></h1>
                     <p>Find the matches now!</p>
                     <div>
-                        <div><i class="fa-regular fa-clock margin-right"></i><small>Time</small></div>
+                        <div><i class="fa-regular fa-clock margin-right"></i><small>Time Left</small></div>
                         <h2 class="timer no-margin-vertical"></div>
                     </div>
                 </div>
