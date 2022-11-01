@@ -8,12 +8,13 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development vite",
-    "build": "cross-env NODE_ENV=production vite build",
+    "build": "cross-env NODE_ENV=production vite build && npm run import-prod-assets",
     "build-cordova": "cross-env TARGET=cordova cross-env NODE_ENV=production vite build && node ./build/build-cordova.js && cd cordova && npx cordova build && cd .. && npm run import-cordova-assets",
     "postinstall": "cpy --flat ./node_modules/framework7-icons/fonts/*.* ./src/fonts/ && cpy --flat ./node_modules/material-icons/iconfont/*.* ./src/fonts/",
     "emulate": "cd cordova && npx cordova run --emulator",
     "install-cordova-dev": "cd cordova && npm install && npx cordova platform add android",
-    "import-cordova-assets": "cpy ./src/static/** ./cordova/www/static/"
+    "import-cordova-assets": "cpy ./src/static/** ./cordova/www/static/",
+    "import-prod-assets": "cpy ./src/static/** ./www/static/"
   },
   "browserslist": [
     "IOS >= 13",
