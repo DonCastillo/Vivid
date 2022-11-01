@@ -1,4 +1,4 @@
-# iRecommend
+# Vivid
 Assignment 1 in NMED 3630: Mobile Application Development
 <br>
 Click here to view [exercise](./docs/MobileApp-AssignmentOne.pdf) description.
