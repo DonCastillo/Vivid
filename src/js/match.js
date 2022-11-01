@@ -276,27 +276,27 @@ function LevelConfig() {
 		time = 15;
 	} else if (level <= 9) {
 		itemCount = 8;
-		time = 20;
+		time = 25;
 	} else if (level <= 12) {
 		itemCount = 10;
-		time = 20;
+		time = 25;
 	} else if (level <= 15) {
 		itemCount = 12;
-		time = 25;
+		time = 35;
 	} else if (level <= 18) {
 		itemCount = 14;
-		time = 25;
+		time = 35;
 	} else if (level <= 21) {
 		itemCount = 16;
-		time = 30;
+		time = 40;
 	} else if (level <= 24) {
 		itemCount = 18;
-		time = 35;
+		time = 50;
 	} else if (level <= 27) {
 		itemCount = 20;
-		time = 40;
+		time = 60;
 	} else {
 		itemCount = 15;
-		time = 90;
+		time = 100;
 	}
 }
